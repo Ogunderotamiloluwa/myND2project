@@ -1,0 +1,350 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
+
+
+.profile{
+ font-weight: bolder;
+  display: flex;
+  width: 50%;
+  height: 20vh;
+font-size: 0.7;
+font-style: italic;
+  object-fit: contain;
+  color:  rgb(54, 69, 79);
+  padding-left: 5%;
+position: relative;
+bottom: 35px;
+}
+
+.allnavs{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  font-size: 1.1rem;
+ color:  rgb(54, 69, 79);
+}
+.nav1:hover{
+text-decoration: underline;
+cursor: pointer;
+}
+.nav2:hover{
+text-decoration: underline;
+cursor: pointer;
+}
+.nav3:hover{
+text-decoration: underline;
+cursor: pointer;
+}
+.health{
+  font-size: 2rem;
+  display: flex;
+  padding-left: 7%;
+   color:  rgb(54, 69, 79);
+   font-family: "Boldonse", system-ui;
+}
+.Takecarem{
+   font-family: "Boldonse", system-ui;
+}
+.Medicalm{
+   font-family: "Boldonse", system-ui;
+}
+.Supporting{
+   font-size: 1.2rem;
+  display: flex;
+  padding-left: 7%;
+   color:  rgb(54, 69, 79);
+   font-weight: bolder;
+}
+.doctorimg{
+  width: 40%;
+  height: 70vh;
+}
+.doctortxt{
+   width: 50%;
+  height: 70vh;
+  padding-top: 5%;
+   
+}
+.information1,.information2,.information3{
+ 
+  width: 34.6%;
+ 
+}
+.infoimg{
+width: 100%;
+height: 50%;
+}
+.infotxt{
+  width: 100%;
+  height: 70%;
+}
+.infoimg:hover>:not(:hover){
+  opacity: 0.3;
+  text-shadow: black;
+  text-shadow: 5px;
+  cursor: pointer;
+}
+.imagedi:hover{
+  transform: scale(1.1);
+    position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+   text-shadow: black;
+  
+}
+.imagedii:hover{
+  transform: scale(1.1);
+    position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+   text-shadow: black;
+  
+}
+.imagediii:hover{
+  transform: scale(1.1);
+    position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+   text-shadow: black;  
+}
+.Readmore3:hover{
+  text-decoration: underline;
+  transition: 2s;
+}
+.Readmore1:hover{
+  text-decoration: underline;
+}
+.Readmore2:hover{
+  text-decoration: underline;
+}
+.Diagnose,.Getstarted{
+  height: 6vh;
+  width: 25%;
+border-width: 1px;
+border-color: rgb(54, 69, 79) ;
+  border-radius: 10px;
+ color:  rgb(54, 69, 79);
+ cursor: pointer;
+}
+.Diagnose:hover{
+  color: white;
+  background-color:  rgb(54, 69, 79);
+  transition: 0.5s;
+}
+.Getstarted:hover{
+   color: white;
+  background-color:  rgb(54, 69, 79);
+  transition: 0.5s;
+}
+.alldestop{
+  display: block;
+}
+.allmobile{
+  display: none;
+}
+
+
+.semialll{
+  display: none;
+}
+@media (max-width: 900px) {
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&display=swap');
+
+  .alldestop{
+  display: none;
+}
+.allmobile{
+  display: block;
+  height:75%;
+}
+.semialll{
+  display: block;
+  position: relative;
+  display: flex;
+  top: 3%;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+.alltopnav{
+  display: flex;
+  flex-direction: row;
+  font-weight: bolder;
+  display: flex;
+  width: 50%;
+  height: 10vh;
+font-size: 0.7;
+font-style: italic;
+ color:  rgb(54, 69, 79);
+ align-items: center;
+ justify-content: center;
+  margin-left: 4%;
+}
+.dashbord{
+  width: 30%;
+  height: 10vh;
+position: relative;
+left: 80%;
+top: 10%;
+background-color: transparent;
+display: flex;
+}
+.healthm{
+  display: flex;
+  font-size: 1.7rem;
+  margin-left: 0%;
+  width: 100%;
+  justify-content: center;
+   font-family: "Boldonse", system-ui;
+ 
+}
+.Supportingm{
+  display: flex;
+position: relative;
+right: 3%;
+  width: 100%;
+  justify-content: center;
+ padding-bottom: 10%;
+ font-size: 1.2rem;
+}
+.doctortxtm{
+  width: 100%;
+}
+.Medicalm {
+  display: flex;
+  font-size: clamp(1rem, 1.7rem, 2.5rem);
+  margin-left: 0%;
+  width: 100%;
+  justify-content: center;
+  font-family: "Boldonse", system-ui;
+  padding-bottom: 5%;
+}
+.Takecarem{
+  display: flex;
+font-family: "Boldonse", system-ui;
+font-size: 1.5rem;
+justify-content: center;
+ font-size: clamp(0.7rem, 1.5rem, 2.2rem);
+  margin-left: 0%;
+  margin-bottom:5% ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slider-container {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  bottom: 30%;
+
+  
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-item {
+  width: 100%;
+  flex-shrink: 0;
+  text-align: center; /* Optional: Center the caption text */
+}
+
+.slide-item img {
+  display: block; /* Prevent extra space below the image */
+  width: 100%;
+  gap: 2rem;
+  display: flex;
+}
+
+.image-caption {
+  padding: 10px; /* Add some spacing around the text */
+  background-color: #f0f0f0; /* Optional: Add a background color to the caption */
+  font-size: 0.9em; /* Optional: Adjust the font size */
+}
+
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev-btn {
+  left: 10px;
+  margin-top: -20%;
+}
+
+.next-btn {
+  margin-top: -20%;
+  right: 10px;
+}
+.ataxiam{
+    display: flex;
+font-family: "Boldonse", system-ui;
+font-size: 1.5rem;
+justify-content: start;
+ font-size: clamp(0.7rem, 1.5rem, 2.2rem);
+  margin-left: 0%;
+}
+.image-caption{
+    display: flex;
+font-family: "Boldonse", system-ui;
+font-size: 1.5rem;
+ font-size: clamp(1rem, 1.3rem, 1.7rem);
+  margin-left: 0%;
+  background-color: none;
+  text-align: justify;
+}
+.image-caption2{
+    display: flex;
+font-family: "Boldonse", system-ui;
+font-size: 1rem;
+
+  margin-left: 0%;
+  background-color: none;
+ color: rgb(54, 69, 79) ;
+  text-align: justify;
+  margin-left: 2%;
+}
+.center-container {
+    display: flex;
+    justify-content: center; /* Horizontally centers items */
+    align-items: center; /* Vertically centers items (if the container has a defined height) */
+    /* Optional: If you want the container to take up the full width/height of its parent */
+    width: 100%;
+}
+.link2{
+  justify-content: start;
+  margin-top: 6%;
+  width: 30%;
+  font-size: 1.2rem;
+  color:  rgb(54, 69, 79);
+  cursor: pointer;
+  color: inherit;text-decoration: none;
+}
+
+}
