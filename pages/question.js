@@ -62,9 +62,17 @@ class HealthQuestionnaire {
           this.userData = profile;
           // Also load diagnostic tracking if available
           if (profile.diagnosticTracking) {
+            // Restore askedQuestions as a Set (it was serialized for storage)
+            const restoredAsked =
+              profile.diagnosticTracking.askedQuestions || [];
+            const askedArray = Array.isArray(restoredAsked)
+              ? restoredAsked
+              : Object.values(restoredAsked || {});
+
             this.diagnosticTracking = {
               ...this.diagnosticTracking,
               ...profile.diagnosticTracking,
+              askedQuestions: new Set(askedArray),
             };
           }
           this.showChatInterface();
@@ -454,7 +462,13 @@ class HealthQuestionnaire {
       // Include diagnostic tracking in the saved data
       const dataToSave = {
         ...this.userData,
-        diagnosticTracking: this.diagnosticTracking,
+        // askedQuestions is a Set in memory; serialize as array for storage
+        diagnosticTracking: {
+          ...this.diagnosticTracking,
+          askedQuestions: Array.from(
+            this.diagnosticTracking.askedQuestions || []
+          ),
+        },
       };
       localStorage.setItem("healthProfile", JSON.stringify(dataToSave));
     } catch (e) {
@@ -612,7 +626,9 @@ class HealthQuestionnaire {
     // Assess engagement level - More stringent requirements
     if (
       wordCount < 5 ||
-      /^(yes|no|maybe|ok|fine|good|bad|sure|right|correct)$/i.test(message.trim())
+      /^(yes|no|maybe|ok|fine|good|bad|sure|right|correct)$/i.test(
+        message.trim()
+      )
     ) {
       this.diagnosticTracking.engagementLevel = "low";
       return 0; // Low quality response
@@ -738,7 +754,7 @@ Would you like to continue with more questions, or do you prefer I make an asses
     const sendBtn = document.getElementById("sendBtn");
     sendBtn.disabled = true;
     sendBtn.innerHTML =
-      '<img src="/images/bot-svgrepo-com.svg" alt="Bot Typing">';
+      '<img src="images/bot-svgrepo-com.svg" alt="Bot Typing">';
 
     try {
       // Force conclusion by calling API with conclusion prompt
@@ -774,7 +790,8 @@ Would you like to continue with more questions, or do you prefer I make an asses
       );
     } finally {
       sendBtn.disabled = false;
-      sendBtn.innerHTML = '<img src="/images/send-svgrepo-com.svg" alt="Send">';
+      sendBtn.innerHTML =
+        '<img src="./pages/images/send-svgrepo-com.svg" alt="Send">';
     }
   }
 
@@ -836,7 +853,7 @@ Would you like to continue with more questions, or do you prefer I make an asses
     const sendBtn = document.getElementById("sendBtn");
     sendBtn.disabled = true;
     sendBtn.innerHTML =
-      '<img src="/images/bot-svgrepo-com.svg" alt="Bot Typing">';
+      '<img src="./images/bot-svgrepo-com.svg" alt="Bot Typing">';
 
     try {
       const response = await this.callChatAPI(userMessage);
