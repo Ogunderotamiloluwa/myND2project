@@ -61,5 +61,8 @@ debug-*.html
 *test.html
 *debug.html
 
+# Server folder (deployed separately)
+server/
+
 # If you intentionally want to ignore large images, add patterns here
 # e.g. to ignore all PNGs: # *.png
