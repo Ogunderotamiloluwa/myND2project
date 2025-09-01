@@ -55,5 +55,11 @@ venv.bak/
 # Misc
 Thumbs.db
 
+# Test files
+test-*.html
+debug-*.html
+*test.html
+*debug.html
+
 # If you intentionally want to ignore large images, add patterns here
 # e.g. to ignore all PNGs: # *.png

@@ -1,115 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>result</title>
+  <title>Diagnosis Results - SymptomChat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Boldonse:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resultp.css" />
 </head>
-<link rel="stylesheet" href="resultp.css" />
-<body  style="background-color: #F0F8FF;
-background: linear-gradient(
-    to bottom right,
-    #87CEEB 0%,     
-    #ADD8E6 25%,    
-    #E0FFFF 50%,    
-    #F0F8FF 75%,    
-    #FFFFFF 100%    
-);
-min-height: 100vh;
-margin: 0; ">
-  <div class="all">
-    <h1 style="margin-bottom: 10%;" class="textre">Test result</h1>
-    <nav class="nav1">Our technologies enhance health efficiency and safety</nav>
 
-    <div class="divboxes">
-<div class="boxes">
-  <div style="flex-direction: column;display: flex; width: 100%;">
-  <div class="but">
-       Maleria
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="title">Diagnosis Results</h1>
+      <p class="subtitle">Based on your symptoms, here are the possible conditions</p>
+      <button class="back-btn" onclick="goBackToChat()">← Back to Chat</button>
+    </header>
+
+    <main class="results-container">
+      <div id="results-grid" class="results-grid">
+        <!-- Results will be dynamically inserted here -->
+      </div>
+
+      <div id="no-results" class="no-results" style="display: none;">
+        <p>No diagnosis data found. Please return to the chat and complete your assessment.</p>
+        <button class="primary-btn" onclick="goBackToChat()">Start New Assessment</button>
+      </div>
+    </main>
+
+    <footer class="disclaimer">
+      <p><strong>Medical Disclaimer:</strong> This AI assessment is for informational purposes only and should not
+        replace professional medical advice. Please consult with a healthcare provider for proper diagnosis and
+        treatment.</p>
+    </footer>
   </div>
 
-  <div class="divtxt">
-    <nav style="font-size: 2.2rem;display: flex;position: relative;right: -10%;bottom: 10px;">20%  </nav>
-    <nav style="font-size: 1.2rem;display: flex;position: relative;right: -10%;" >low temperture</nav>
-     <nav style="font-size: 1rem;display: flex;position: relative;right: -10%;margin-top: 5%;font-style: italic;" >pocess automation frees you<br>
-       to focus on other tasks</nav>
+  <script>
+    // Load and display diagnosis results
+    function loadDiagnosisResults() {
+      const diagnosisData = localStorage.getItem('diagnosisResults');
 
-  </div>
+      if (!diagnosisData) {
+        document.getElementById('no-results').style.display = 'block';
+        document.getElementById('results-grid').style.display = 'none';
+        return;
+      }
 
-</div>
-</div>
+      try {
+        const conditions = JSON.parse(diagnosisData);
+        displayResults(conditions);
+      } catch (error) {
+        console.error('Error parsing diagnosis data:', error);
+        document.getElementById('no-results').style.display = 'block';
+        document.getElementById('results-grid').style.display = 'none';
+      }
+    }
 
+    function displayResults(conditions) {
+      const resultsGrid = document.getElementById('results-grid');
+      resultsGrid.innerHTML = '';
 
-<div class="boxes">
-    <div style="flex-direction: column;display: flex; width: 100%;">
-  <div class="but">
-       Diarrhoea
-  </div>
+      conditions.forEach((condition, index) => {
+        const resultCard = createResultCard(condition, index);
+        resultsGrid.appendChild(resultCard);
+      });
+    }
 
-  <div class="divtxt">
-    <nav style="font-size: 2.2rem;display: flex;position: relative;right: -10%;bottom: 10px;">50%  </nav>
-    <nav style="font-size: 1.2rem;display: flex;position: relative;right: -10%;" >low temperture</nav>
-     <nav style="font-size: 1rem;display: flex;position: relative;right: -10%;margin-top: 5%;font-style: italic;" >pocess automation frees you<br>
-       to focus on other tasks</nav>
+    function createResultCard(condition, index) {
+      const card = document.createElement('div');
+      card.className = 'result-card';
 
-  </div>
+      // Extract percentage from chance string (e.g., "75%" or "75% chance")
+      const percentage = condition.chance.match(/\d+/)?.[0] || '0';
 
-</div>
-</div>
+      // Generate explanation based on condition name
+      const explanation = generateExplanation(condition.name, percentage);
 
-<div class="boxes">
-    <div style="flex-direction: column;display: flex; width: 100%;">
-  <div class="but">
-       Fever
-  </div>
+      card.innerHTML = `
+        <div class="card-header">
+          <h3 class="condition-name">${condition.name}</h3>
+        </div>
+        <div class="card-body">
+          <div class="percentage">${percentage}%</div>
+          <div class="probability-label">Probability</div>
+          <div class="explanation">
+            ${explanation}
+          </div>
+        </div>
+      `;
 
-  <div class="divtxt">
-    <nav style="font-size: 2.2rem;display: flex;position: relative;right: -10%;bottom: 10px;">30%  </nav>
-    <nav style="font-size: 1.2rem;display: flex;position: relative;right: -10%;" >High temperture</nav>
-     <nav style="font-size: 1rem;display: flex;position: relative;right: -10%;margin-top: 5%;font-style: italic;" >pocess automation frees you<br>
-       to focus on other tasks</nav>
+      return card;
+    }
 
-  </div>
+    function generateExplanation(conditionName, percentage) {
+      const explanations = {
+        'common cold': 'Your symptoms align with a viral upper respiratory infection. This typically resolves within 7-10 days with rest and fluids.',
+        'flu': 'Influenza symptoms include fever, body aches, and fatigue. Rest, hydration, and antiviral medications may help if started early.',
+        'migraine': 'Recurring headaches that can be severe and debilitating. Triggers include stress, certain foods, and hormonal changes.',
+        'tension headache': 'Most common type of headache, often caused by stress, muscle tension, or poor posture.',
+        'gastritis': 'Inflammation of the stomach lining causing pain and digestive issues. Often related to diet, stress, or bacterial infection.',
+        'food poisoning': 'Illness caused by contaminated food. Symptoms typically resolve within a few days with proper hydration.',
+        'allergic reaction': 'Immune system response to allergens. Avoid triggers and consider antihistamines for mild reactions.',
+        'anxiety': 'Mental health condition that can cause physical symptoms. Treatment may include therapy and lifestyle changes.',
+        'dehydration': 'Insufficient fluid intake can cause various symptoms. Increase water consumption and rest.',
+        'vitamin deficiency': 'Lack of essential nutrients can cause various health issues. Balanced diet and supplements may help.'
+      };
 
-</div>
-</div>
-    </div>
-   </div>
-  </div>
+      const lowerCondition = conditionName.toLowerCase();
+      let explanation = explanations[lowerCondition] ||
+        `Based on your symptoms, you may have ${conditionName.toLowerCase()}. Consider consulting a healthcare provider for proper evaluation.`;
+
+      // Add probability context
+      if (parseInt(percentage) >= 70) {
+        explanation = `High likelihood: ${explanation}`;
+      } else if (parseInt(percentage) >= 40) {
+        explanation = `Moderate likelihood: ${explanation}`;
+      } else {
+        explanation = `Lower likelihood: ${explanation}`;
+      }
+
+      return explanation;
+    }
+
+    function goBackToChat() {
+      // Clear the diagnosis data and return to chat
+      localStorage.removeItem('diagnosisResults');
+      window.location.href = 'pages/question.html';
+    }
+
+    // Load results when page loads
+    document.addEventListener('DOMContentLoaded', loadDiagnosisResults);
+  </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- change font ,correct responsiveness, -->
