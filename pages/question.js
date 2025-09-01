@@ -648,13 +648,14 @@ class HealthQuestionnaire {
     const qualityResponses = this.diagnosticTracking.qualityResponses;
     const questionsAsked = this.diagnosticTracking.questionsAsked;
 
-    // Need at least 6 information areas covered AND 8+ quality responses AND 12+ questions
-    const hasEnoughAreas = coveredAreas >= 6;
-    const hasEnoughQuality = qualityResponses >= 8;
-    const hasEnoughQuestions = questionsAsked >= 12;
+    // Reduced requirements: 5+ areas OR 6+ quality responses OR 8+ questions
+    const hasEnoughAreas = coveredAreas >= 5;
+    const hasEnoughQuality = qualityResponses >= 6;
+    const hasEnoughQuestions = questionsAsked >= 8;
 
+    // Ready if ANY of these conditions are met (more flexible)
     this.diagnosticTracking.readyForDiagnosis =
-      hasEnoughAreas && hasEnoughQuality && hasEnoughQuestions;
+      hasEnoughAreas || hasEnoughQuality || hasEnoughQuestions;
 
     console.log(
       `Diagnosis readiness: Areas: ${coveredAreas}/7, Quality: ${qualityResponses}, Questions: ${questionsAsked}, Ready: ${this.diagnosticTracking.readyForDiagnosis}`
@@ -691,6 +692,13 @@ class HealthQuestionnaire {
       return;
     }
 
+    // Check for /proceed command (force diagnosis with limited info)
+    if (message.toLowerCase() === "/proceed") {
+      this.handleProceedCommand();
+      chatInput.value = "";
+      return;
+    }
+
     // Assess response quality and update tracking
     const qualityScore = this.assessResponseQuality(message);
     this.diagnosticTracking.qualityResponses += qualityScore;
@@ -721,25 +729,17 @@ class HealthQuestionnaire {
       const tracking = this.diagnosticTracking;
       const areas = tracking.informationAreas;
       const coveredAreas = Object.values(areas).filter(Boolean).length;
-      const missingAreas = Object.entries(areas)
-        .filter(([k, v]) => !v)
-        .map(([k, v]) => k);
 
-      const insufficientInfoMessage = `I understand you want results, but I need more information for an accurate diagnosis.
+      const insufficientInfoMessage = `I need more information for an accurate diagnosis.
 
 Current status:
 • Questions answered: ${tracking.questionsAsked}
 • Quality responses: ${tracking.qualityResponses}
 • Information areas covered: ${coveredAreas}/7
 
-Missing key information about:
-${missingAreas
-  .map((area) => `• ${area.charAt(0).toUpperCase() + area.slice(1)}`)
-  .join("\n")}
+Send "/proceed" if you want me to make an assessment with limited information (Note: this will be less accurate).
 
-Please provide more detailed information about your symptoms. A proper diagnosis requires understanding the full picture of your condition.
-
-Would you like to continue with more questions, or do you prefer I make an assessment with limited information? (Note: Limited information = less accurate diagnosis)`;
+Otherwise, please continue answering questions for a better diagnosis.`;
 
       this.displayMessage(insufficientInfoMessage, "bot");
       this.addToChatHistory(insufficientInfoMessage, "bot");
@@ -750,6 +750,25 @@ Would you like to continue with more questions, or do you prefer I make an asses
     this.displayMessage("/result", "user");
     this.addToChatHistory("/result", "user");
 
+    // If ready, proceed with diagnosis
+    await this.generateDiagnosis();
+  }
+
+  async handleProceedCommand() {
+    // Display user message for /proceed
+    this.displayMessage("/proceed", "user");
+    this.addToChatHistory("/proceed", "user");
+
+    const warningMessage =
+      "Proceeding with limited information. Diagnosis accuracy may be reduced.";
+    this.displayMessage(warningMessage, "bot");
+    this.addToChatHistory(warningMessage, "bot");
+
+    // Force diagnosis generation
+    await this.generateDiagnosis();
+  }
+
+  async generateDiagnosis() {
     // Show typing indicator
     const sendBtn = document.getElementById("sendBtn");
     sendBtn.disabled = true;
@@ -771,6 +790,10 @@ Would you like to continue with more questions, or do you prefer I make an asses
         const userResponse = this.formatConditionNames(conditions);
         this.displayMessage(userResponse, "bot");
         this.addToChatHistory(userResponse, "bot");
+
+        // Mark diagnosis as provided
+        this.diagnosticTracking.diagnosisProvided = true;
+        this.diagnosticTracking.conversationState = "explanation";
       } else {
         // Fallback if not proper JSON
         this.displayMessage(
@@ -783,7 +806,7 @@ Would you like to continue with more questions, or do you prefer I make an asses
         );
       }
     } catch (error) {
-      console.error("Result command error:", error);
+      console.error("Diagnosis generation error:", error);
       this.displayMessage(
         "Sorry, I'm having trouble generating results right now.",
         "bot"
@@ -856,6 +879,16 @@ Would you like to continue with more questions, or do you prefer I make an asses
       '<img src="./images/bot-svgrepo-com.svg" alt="Bot Typing">';
 
     try {
+      // Check if diagnosis should be automatically triggered
+      if (
+        this.checkDiagnosisReadiness() &&
+        !this.diagnosticTracking.diagnosisProvided
+      ) {
+        console.log("Auto-triggering diagnosis based on readiness criteria");
+        await this.generateDiagnosis();
+        return;
+      }
+
       const response = await this.callChatAPI(userMessage);
 
       // Check if response is JSON format (final diagnosis)
