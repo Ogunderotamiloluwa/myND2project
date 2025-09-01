@@ -1,309 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Take off.com</title>
+  <title>SymptomChat - Anonymous Medical Symptom Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Boldonse&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="My ND2p.css">
 </head>
-<link rel="stylesheet" href="My ND2p.css" />
-<body style="background-color: #F0F8FF;
-background: linear-gradient(
-    to bottom right,
-    #87CEEB 0%,     
-    #ADD8E6 25%,    
-    #E0FFFF 50%,    
-    #F0F8FF 75%,    
-    #FFFFFF 100%    
-);
-min-height: 100vh;
-margin: 0; height: 400vh;">
-<div class="alldestop">
-<div style="display: flex;flex-direction: row; padding-top: 5%;" class="profileandnavs">
-<div class="profile">
-AI In Health Care
 
-  </div>
-<div class="allnavs">
-  <nav class="nav1">Medical library</nav>
-  <nav class="nav2">Help</nav>
-  <nav class="nav3">Diagnosis</nav>
-</div>
-  </div>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="/" class="logo">SympChat</a>
 
+        <!-- Desktop Navigation -->
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+        </ul>
 
+        <a href="pages/question.html" class="consult-btn">Start Assessment</a>
 
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
 
-  <div style="padding-top: 5%;display: flex;flex-direction: row;">
-      <div>
-  <h1 class="health">Health.<br>
-  Powered by Samson.
-  </h1>
-  <nav class="Supporting">
-    Supporting better health outcomes and clinical excellence with<br>
-    intelligent technology.
-  </nav> 
-       </div>
-  <div style="width: 40%;height: 40vh;margin-left: 15%;margin-bottom: 25%;">
-
-    <img src="Gemini_Generated_Image_x6cl3px6cl3px6cl.png" style="object-fit: contain;width: 80vh;height: 70vh;">
-  </div>
-  </div>
-
-
-
-
-
-
-<div style="height: 40vh; width: 90%; margin-left: 5%;  gap: 10rem; display: flex;flex-direction: row;">
-<div class="doctorimg">
-  <img src="Gemini_Generated_Image_ojpod6ojpod6ojpo.png" style="object-fit: contain; width: 100%;
-  height: 70vh; background-color: transparent;">
-</div>
-<div class="doctortxt">
-  <nav style="font-size: 2rem; color:  rgb(54, 69, 79);" class="Medical">Medical library</nav>
-  <nav style="display: flex;padding-top: 5%;font-size: 1.2rem;   color:  rgb(54, 69, 79); line-height: 1.6; ">
-    Good information leads to better health choices.<br>
-    Medical Library is a great place to look for answers about your health.<br>
-    Its full of easy-to-understand tips to help you stay well and learn<br>
-    more about conditions and symptoms.<br>
-    Created by our doctors and grounded in the latest research, its here<br>
-    to help you understand your health.
-  </nav>
-  <div style="gap: 5rem; display: flex; margin-top: 8%;margin-left: 5%; ">
-  <button class="Diagnose">Diagnose</button>
-   <button class="Getstarted">Get started</button>
-  </div>
-</div>
-</div>
-
-<h1 style="font-size: 2rem; padding-top: 24%; padding-left: 6%;color: rgb(54, 69, 79);" class="Takecare">Take care of yourself</h1>
-
-
-<div style=" width: 85%;height: 80vh; margin-left: 7%;display: flex;flex-direction: row; gap: 5rem;">
-  <div class="information1">
-    <div class="infoimg">
-      <img src="Gemini_Generated_Image_fl220efl220efl22.png" style="width: 100%; height: 130%; object-fit: contain;" class="imagediii">
+      <!-- Mobile Navigation Menu -->
+      <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+          <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+          <li><a href="#how-it-works" onclick="closeMobileMenu()">How it works</a></li>
+          <li><a href="#privacy" onclick="closeMobileMenu()">Privacy</a></li>
+          <li><a href="pages/question.html" class="mobile-consult-btn" onclick="closeMobileMenu()">Start Assessment</a>
+          </li>
+        </ul>
+      </div>
     </div>
-     <div class="infotxt">
-<nav style="font-size: 2rem; padding-top: 25%;color:  rgb(54, 69, 79);display: flex;">Living with Friedreichs <br>ataxia</nav>
-<nav style="font-size: 1rem; color: rgb(54, 69, 79) ;line-height: 1.2;font-weight: bolder;display: flex; padding-top: 7%;">
-What is it like to live with Friedreich’s ataxia?,<br>
-Learn how to improve symptoms and quality<br>
-of life with therapy, exercise, and helpful<br>
-tools.
-    </nav>
-    <a href="https://ada.com/editorial/living-with-friedreichs-ataxia/" style="color: inherit;text-decoration: none;">
-    <nav style="font-size: 1.3rem;padding-top: 7%;color:  rgb(71, 124, 159);cursor: pointer;" class="Readmore1">Read more</nav>
-    </a>
-         </div>
-  </div>
+  </header>
 
+  <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="badge">100% Anonymous & Private</div>
+          <h1>Get Instant Medical Assessment for Your Symptoms</h1>
+          <p>Chat anonymously with our AI-powered symptom checker. No personal information required. Get reliable
+            medical insights based on your symptoms in minutes.</p>
+          <a href="pages/question.html" class="book-btn">Start Free Assessment</a>
+        </div>
+        <div class="hero-image">
+          <img src="images/logo.png" alt="Anonymous Medical Chat">
+        </div>
+      </div>
+    </section>
 
+    <!-- Cards Grid -->
+    <div class="cards-grid">
+      <!-- Privacy Card -->
+      <div class="card benefits-card">
+        <h3>Complete Privacy</h3>
+        <p>No names, no personal details. Your symptoms and conversations remain completely anonymous.</p>
+        <a href="#privacy" class="book-now-btn">Learn More</a>
+      </div>
 
-  <div class="information2">
-    <div class="infoimg">
-      <img src="Gemini_Generated_Image_pqvntypqvntypqvn.png" style="width: 100%; height: 130%; object-fit: contain;"class="imagedii">
+      <!-- Speed Card -->
+      <div class="card stats-card">
+        <div class="stats-number">2-5</div>
+        <div class="stats-label">Minutes</div>
+        <h3>Quick Assessment</h3>
+        <p>Get medical insights for your symptoms in just a few minutes through our simple chat interface.</p>
+      </div>
+
+      <!-- AI Assessment -->
+      <div class="card">
+        <h3>AI-Powered Diagnosis</h3>
+        <p>Our advanced AI analyzes your symptoms and provides reliable medical assessments based on medical knowledge.
+        </p>
+        <div class="features-list">
+          <div>✓ Evidence-based analysis</div>
+          <div>✓ Multiple condition assessment</div>
+          <div>✓ Instant results</div>
+        </div>
+      </div>
     </div>
-     <div class="infotxt">
-<nav style="font-size: 2rem; padding-top: 25%;color:  rgb(54, 69, 79);display: flex;">How to deal with COVID- <br>related skin issues</nav>
-<nav style="font-size: 1rem; color: rgb(54, 69, 79) ;line-height: 1.2;font-weight: bolder;display: flex; padding-top: 7%;">
-From dried-out hands to “maskne” to<br>
-unusual levels of sensitivity, the COVID<br>
-pandemic put our skin through a lot. How<br>
-can you help your skin recover?
-    </nav>
-    <a href="https://ada.com/editorial/deal-with-covid-and-skin-issues/" style="color: inherit;text-decoration: none;">
-    <nav style="font-size: 1.3rem;padding-top: 7%;color:  rgb(71, 124, 159);cursor: pointer;" class="Readmore2">Read more</nav>
-    </a>
-         </div>
-  </div>
-  <div class="information3">
-    <div class="infoimg">
-      <img src="Gemini_Generated_Image_31n2qo31n2qo31n2.png" style="width: 100%; height: 130%; object-fit: contain;" class="imagedi">
-    </div>
-     <div class="infotxt">
-<nav style="font-size: 2rem; padding-top: 25%;color:  rgb(54, 69, 79);display: flex;">The 6 most common<br>mosquito-borne diseases</nav>
-<nav style="font-size: 1rem; color: rgb(54, 69, 79) ;line-height: 1.2;font-weight: bolder;display: flex; padding-top: 7%;">
-Mosquito bites are always annoying but in<br>
-some cases, they may also spread disease.<br>
-Learn more about the 6 most common<br>
-mosquito diseases and how to protect<br>
-yourself.
-    </nav>
-    <a href="https://ada.com/editorial/6-most-common-mosquito-borne-diseases/" style="color: inherit;text-decoration: none;">
-    <nav style="font-size: 1.3rem;padding-top: 7%;color:  rgb(71, 124, 159);cursor: pointer;" class="Readmore3">Read more</nav>
-    </a>
-         </div>
-  </div>
-</div>
-<div style="background-color:rgb(214, 214, 214);width: 80%;height: 15vh;border-radius: 40px; display: flex;margin-top: 20%;margin-left: 9%;align-items: center;justify-content: center;font-size: 1.3rem;color: rgb(71, 124, 159) ;">
-  Get started today
-</div>
-                         </div>
-          
 
-
-
-
-
-
-
-
-
-
-
-  
-
-
-          <div class="allmobile" >
-            <div class="alltopnav">
-<div class="profilem">AI In Health Care</div>
-<div class="dashbord">
-
-</div>
-           </div>
-
-      <div style="padding-top: 5%;display: flex;flex-direction: column;gap: 3rem;">
-      <div>
-  <h1 class="healthm">Health.<br>
-  Powered by Samson.
-  </h1>
-  <nav class="Supportingm">
-    Supporting better health outcomes and<br> clinical excellence with
-    intelligent<br> technology.
-  </nav> 
-       </div>
-  <div style="width: 100%;height: 60vh;margin-bottom: 25%;justify-content: center;">
-
-    <img src="Gemini_Generated_Image_x6cl3px6cl3px6cl.png" style="object-fit: contain;width:100%;height: 75vh;justify-content: center;display: flex;">
-  </div>
-  </div>
-
-
-
-
-  <div style="height: 40vh; width: 90%; margin-left: 5%;  gap: 10rem; display: flex;flex-direction: column;">
-
-<div class="doctortxtm">
-  <nav  class="Medicalm">Medical library</nav>
-  <nav style="display: flex;padding-top: 5%;font-size: 1.2rem;   color:  rgb(54, 69, 79); line-height: 1.6; ">
-    Good information leads to better health choices.<br>
-    Medical Library is a great place to look for answers about your health.<br>
-    Its full of easy-to-understand tips to help you stay well and learn<br>
-    more about conditions and symptoms.<br>
-    Created by our doctors and grounded in the latest research, its here<br>
-    to help you understand your health.
-  </nav>
-  <div style="gap: 5rem; display: flex; margin-top: 8%;margin-left: 5%; ">
-  <button class="Diagnose">Diagnose</button>
-   <button class="Getstarted">Get started</button>
-  </div>
-</div>
-<div class="doctorimg" style="width: 100%;height: 60vh;justify-content: center;">
-  <img src="Gemini_Generated_Image_ojpod6ojpod6ojpo.png" style="object-fit: contain;width:100%;height: 75vh;justify-content: center;display: flex;position: relative;bottom: 20%;">
-</div>
-</div>
-          <div>
+    <!-- Service Stats -->
+    <div class="card">
+      <div class="service-stats">
+        <div class="stats-list">
+          <h3>How SymptomChat Works</h3>
+          <p>Simple 3-step process to get your symptom assessment</p>
+          <div class="stat-item">
+            <span class="stat-percentage">Step 1</span>
+            <span class="stat-label">Answer basic health questions</span>
           </div>
+          <div class="stat-item">
+            <span class="stat-percentage">Step 2</span>
+            <span class="stat-label">Chat about your symptoms</span>
           </div>
-         
-
-
-
-
-
-         
-          <div class="semialll">
-<nav style=" color: rgb(54, 69, 7);" class="Takecarem">Take care of yourself</nav>
-  
-         
-
-
-<div class="slider-container">
-  <div class="slider-track">
-    <div class="slide-item">
-      <img src="Gemini_Generated_Image_fl220efl220efl22.png" alt="Description of Image 1">
-      <div class="image-caption"> Living with Friedreichs
-        <br>ataxia</div>
-         <nav class="image-caption2">What is it like to live with Friedreichs <br>ataxia? Learn how to improve symptoms<br> and quality of life with therapy, exercise,<br> and helpful tools.</nav>
-                                                  <a class="link1"  href="https://ada.com/editorial/living-with-friedreichs-ataxia/">
-                                                      <nav  class="link2">Read more</nav>
-                                                    </a>    
+          <div class="stat-item">
+            <span class="stat-percentage">Step 3</span>
+            <span class="stat-label">Receive AI diagnosis</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/hero-image.png" alt="Chat Interface">
+        </div>
+      </div>
     </div>
-    <div class="slide-item">
-      <img src="Gemini_Generated_Image_pqvntypqvntypqvn.png" alt="Description of Image 2">
-              <div class="image-caption">How to deal with<br> COVID-
-        related skin issues</div>
-            <nav class="image-caption2">From dried-out hands to “maskne”<br> to
-        unusual levels of sensitivity,<br> the COVID
-        pandemic put our skin<br> through a lot. How
-        can you help<br> your skin recover?</nav>
-                                                 <a class="link1"  href="https://ada.com/editorial/deal-with-covid-and-skin-issues/">
-                                                      <nav class="link2">Read more</nav>
-                                                    </a>    
-            </div>
-            <div class="slide-item">
-      <img src="Gemini_Generated_Image_31n2qo31n2qo31n2.png" alt="Description of Image 3">
-      <div class="image-caption">The 6 most common<br>
-                mosquito-borne<br> diseases</div>
-                  <nav class="image-caption2">Mosquito bites are always <br>annoying but in
-            some cases, they may<br> also spread disease.
-            Learn more<br> about the 6 most common
-            mosquito diseases<br> and how to protect
-            yourself.</nav>  
-                                                    <a class="link1" href="https://ada.com/editorial/6-most-common-mosquito-borne-diseases/">
-                                                      <nav class="link2">Read more</nav>
-                                                    </a>        
+
+    <!-- Features and Benefits -->
+    <div class="cards-grid">
+      <div class="card consultation-card">
+        <h3>Anonymous & Secure</h3>
+        <p>Your privacy is our priority. No registration, no personal data collection, just pure symptom assessment.</p>
+        <div style="margin: 20px 0; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="background: white; padding: 15px; border-radius: 10px;">
+            <strong>100% Private Conversations</strong>
+          </div>
+          <a href="pages/question.html" class="book-now-btn">Start Now</a>
+        </div>
+        <div style="background: #d4edda; padding: 10px; border-radius: 8px; font-size: 12px;">
+          No data stored permanently
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Trusted AI Technology</h3>
+        <p style="font-size: 14px;">Powered by advanced medical AI trained on thousands of medical cases and symptoms
+        </p>
+        <div class="trust-indicators" style="margin: 15px 0;">
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
+            <span style="font-size: 12px;">Medical knowledge base</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
+            <span style="font-size: 12px;">Evidence-based analysis</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
+            <span style="font-size: 12px;">Continuous learning</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card specialty-card">
+        <h3>Quick & Easy Process</h3>
+        <p>Simple steps to get your assessment:</p>
+        <div style="display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap;">
+          <div style="padding: 8px 12px; background: #e3f2fd; border-radius: 8px; font-size: 12px;">Questions</div>
+          <div style="padding: 8px 12px; background: #f3e5f5; border-radius: 8px; font-size: 12px;">Chat</div>
+          <div style="padding: 8px 12px; background: #e8f5e8; border-radius: 8px; font-size: 12px;">Diagnosis</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Start Your Assessment</h3>
+        <p>Ready to understand your symptoms better? Begin your anonymous consultation now.</p>
+        <a href="pages/question.html" class="connect-btn">Start Assessment</a>
+      </div>
     </div>
-    
+
+    <!-- About Section -->
+    <section class="video-service">
+      <h2>Anonymous symptom assessment <span style="color: #ccc;">powered by AI technology for instant medical
+          insights.</span></h2>
+      <p>No registration required. No personal data collected. Just honest, reliable symptom analysis.</p>
+    </section>
+
+    <!-- Key Features -->
+    <div class="bottom-gallery">
+      <div class="gallery-item feature-item">
+        <div class="feature-icon">🔒</div>
+        <p>Private</p>
+      </div>
+      <div class="gallery-item feature-item">
+        <div class="feature-icon">⚡</div>
+        <p>Fast</p>
+      </div>
+      <div class="gallery-item feature-item">
+        <div class="feature-icon">🤖</div>
+        <p>AI-Powered</p>
+      </div>
+      <div class="gallery-item feature-item">
+        <div class="feature-icon">💬</div>
+        <p>Chat-Based</p>
+      </div>
+      <div class="gallery-item feature-item">
+        <div class="feature-icon">🎯</div>
+        <p>Accurate</p>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="card" style="text-align: center; margin: 40px 0;">
+      <h3>Ready to understand your symptoms?</h3>
+      <p>Start your free, anonymous assessment now. No signup required.</p>
+      <a href="pages/question.html" class="book-now-btn" style="margin-top: 20px;">Start Assessment</a>
+    </div>
   </div>
-  <button class="prev-btn">Prev</button>
-  <button class="next-btn">Next</button>
 
-</div>
-<div  style="
- position: relative;bottom: 1550px;" class="center-contain">
-  <div class="center-container">
-    <button style="height: 10vh; width: 50%;border-radius: 20px;border: none;background-color:rgb(214, 214, 214);font-size: 1rem;color: rgb(71, 124, 159) ;margin-top: 20%;">Get started today</button>
-</div>
+  <script>
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNav = document.getElementById('mobileNav');
 
-</div>
+    mobileMenuToggle.addEventListener('click', function () {
+      const isActive = mobileNav.classList.contains('active');
 
+      if (isActive) {
+        closeMobileMenu();
+      } else {
+        mobileNav.classList.add('active');
+        mobileMenuToggle.classList.add('active');
+        document.body.classList.add('mobile-menu-open');
+      }
+    });
 
+    function closeMobileMenu() {
+      mobileNav.classList.remove('active');
+      mobileMenuToggle.classList.remove('active');
+      document.body.classList.remove('mobile-menu-open');
+    }
 
- </div>
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function (event) {
+      if (!mobileMenuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
+        closeMobileMenu();
+      }
+    });
 
-
-
-
-
-
-
-
-
-
-
-<script>
-  const sliderTrack = document.querySelector('.slider-track');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-
-let slideIndex = 0;
-const images = sliderTrack.querySelectorAll('img');
-
-nextBtn.addEventListener('click', () => {
-  if (slideIndex < images.length - 1) {
-    slideIndex++;
-    sliderTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
-  }
-});
-
-prevBtn.addEventListener('click', () => {
-  if (slideIndex > 0) {
-    slideIndex--;
-    sliderTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
-  }
-});
-</script>
+    // Close mobile menu on window resize
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) {
+        closeMobileMenu();
+      }
+    });
+  </script>
 </body>
+
 </html>

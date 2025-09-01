@@ -1,0 +1,65 @@
+# Recommended .gitignore for mixed web projects (macOS / Node / Python / editors)
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Runtime / environment
+.env
+.env.*
+.local
+
+# Build output
+dist/
+build/
+out/
+.next/
+public/build/
+/.parcel-cache/
+.vite/
+/.svelte-kit/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+venv/
+env/
+ENV/
+venv.bak/
+
+# Misc
+Thumbs.db
+
+# Test files
+test-*.html
+debug-*.html
+*test.html
+*debug.html
+
+# If you intentionally want to ignore large images, add patterns here
+# e.g. to ignore all PNGs: # *.png

@@ -1,0 +1,286 @@
+/* Results Page Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #F0F8FF;
+  background: linear-gradient(to bottom right,
+      #87CEEB 0%,
+      #ADD8E6 25%,
+      #E0FFFF 50%,
+      #F0F8FF 75%,
+      #FFFFFF 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.title {
+  font-family: 'Boldonse', 'Open Sans', sans-serif;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #5a6c7d;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.back-btn:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Result Cards */
+.result-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  border-bottom: 2px solid rgba(52, 152, 219, 0.3);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.condition-name {
+  font-family: 'Boldonse', 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.percentage {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #3498db;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.probability-label {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.explanation {
+  color: #5a6c7d;
+  line-height: 1.6;
+  font-style: italic;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+/* No Results State */
+.no-results {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 40px;
+  color: #5a6c7d;
+}
+
+.no-results p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.primary-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Footer/Disclaimer */
+.disclaimer {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.disclaimer p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  body {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .result-card {
+    min-height: 250px;
+    padding: 20px;
+  }
+
+  .percentage {
+    font-size: 2.5rem;
+  }
+
+  .condition-name {
+    font-size: 1.3rem;
+  }
+
+  .back-btn {
+    position: static;
+    margin-bottom: 15px;
+  }
+
+  .header {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .result-card {
+    min-height: 220px;
+    padding: 15px;
+  }
+
+  .percentage {
+    font-size: 2.2rem;
+  }
+
+  .condition-name {
+    font-size: 1.2rem;
+  }
+
+  .explanation {
+    font-size: 0.9rem;
+  }
+}
+
+/* Color variations for different percentages */
+.result-card:nth-child(1) .percentage {
+  color: #e74c3c;
+  /* Red for highest probability */
+}
+
+.result-card:nth-child(2) .percentage {
+  color: #f39c12;
+  /* Orange for medium probability */
+}
+
+.result-card:nth-child(3) .percentage {
+  color: #27ae60;
+  /* Green for lower probability */
+}
+
+.result-card:nth-child(n+4) .percentage {
+  color: #3498db;
+  /* Blue for additional conditions */
+}

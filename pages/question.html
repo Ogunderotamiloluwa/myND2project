@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question | </title>
+    <link rel="stylesheet" href="question.css">
+    <script src="question.js" defer></script>
+</head>
+
+<body>
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="sidebar">
+        <h1 class="logo">Logo</h1>
+
+        <div class="article">
+            <h2 class="side-title">
+                Lets know you small
+            </h2>
+            <p class="side-msg">Answer these very few questions to help us make correct decisions. <span>We do not save
+                    any of these info so do not reload page.</span></p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-step active" data-step="1">1</div>
+                <div class="progress-step" data-step="2">2</div>
+                <div class="progress-step" data-step="3">3</div>
+                <div class="progress-step" data-step="4">4</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Demographics Container -->
+        <div class="container demographics-container active-container">
+            <!-- Gender-ctn -->
+            <div class="gender-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">What is your gender?</h3>
+                    <p class="serial">01</p>
+                </div>
+
+                <!-- Options -->
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="gender" id="gender-male" value="male">
+                        <div class="icon-ctn">
+                            <img src="./images/male-gender-sign-svgrepo-com.svg" alt="" class="icon">
+                        </div>
+                        <label for="gender-male" class="option-label">Male</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" name="gender" id="gender-female" value="female">
+                        <div class="icon-ctn">
+                            <img src="./images/female-sign-svgrepo-com.svg" alt="" class="icon">
+                        </div>
+                        <label for="gender-female" class="option-label">Female</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" name="gender" id="gender-other" value="other">
+                        <div class="icon-ctn">
+                            <img src="./images/male-and-female-signs-svgrepo-com.svg" alt="" class="icon">
+                        </div>
+                        <label for="gender-other" class="option-label">Others</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Age ctn -->
+            <div class="age-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">What is your Age?</h3>
+                    <p class="serial">02</p>
+                </div>
+
+                <!-- Options -->
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="age" id="age-1" value="16-20" class="age">
+                        <label for="age-1" class="option-label">16-20</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" name="age" id="age-2" value="20-30" class="age">
+                        <label for="age-2" class="option-label">20-30</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" name="age" id="age-3" value="30-40" class="age">
+                        <label for="age-3" class="option-label">30-40</label>
+                    </div>
+                </div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="age" id="age-4" value="40-50" class="age">
+                        <label for="age-4" class="option-label">40-50</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" name="age" id="age-5" value="50-60" class="age">
+                        <label for="age-5" class="option-label">50-60</label>
+                    </div>
+
+                    <div class="option">
+                        <input type="radio" name="age" id="age-6" value="60+" class="age">
+                        <label for="age-6" class="option-label">60+</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="nav-btn next-btn" data-next="geography">Next</button>
+            </div>
+        </div>
+
+        <!-- Geography & Lifestyle Container -->
+        <div class="container geography-container">
+            <div class="geography-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">Geography & Lifestyle</h3>
+                    <p class="serial">03</p>
+                </div>
+
+                <!-- Country and State side by side -->
+                <div class="geography-row">
+                    <!-- Country Selection -->
+                    <div class="geography-item">
+                        <h4 class="sub-title">Country</h4>
+                        <div class="options">
+                            <div class="option select-option">
+                                <select id="country" name="country" class="select-styled" required>
+                                    <option value="Nigeria">Nigeria</option>
+                                    <option value="Ghana">Ghana</option>
+                                    <option value="Kenya">Kenya</option>
+                                    <option value="South Africa">South Africa</option>
+                                    <option value="Egypt">Egypt</option>
+                                    <option value="Morocco">Morocco</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- State Selection -->
+                    <div class="geography-item">
+                        <h4 class="sub-title">State/Region</h4>
+                        <div class="options">
+                            <div class="option select-option">
+                                <select id="state" name="state" class="select-styled" required>
+                                    <option value="">Select your state</option>
+                                    <option value="Abia">Abia</option>
+                                    <option value="Adamawa">Adamawa</option>
+                                    <option value="Akwa Ibom">Akwa Ibom</option>
+                                    <option value="Anambra">Anambra</option>
+                                    <option value="Bauchi">Bauchi</option>
+                                    <option value="Bayelsa">Bayelsa</option>
+                                    <option value="Benue">Benue</option>
+                                    <option value="Borno">Borno</option>
+                                    <option value="Cross River">Cross River</option>
+                                    <option value="Delta">Delta</option>
+                                    <option value="Ebonyi">Ebonyi</option>
+                                    <option value="Edo">Edo</option>
+                                    <option value="Ekiti">Ekiti</option>
+                                    <option value="Enugu">Enugu</option>
+                                    <option value="FCT">Federal Capital Territory</option>
+                                    <option value="Gombe">Gombe</option>
+                                    <option value="Imo">Imo</option>
+                                    <option value="Jigawa">Jigawa</option>
+                                    <option value="Kaduna">Kaduna</option>
+                                    <option value="Kano">Kano</option>
+                                    <option value="Katsina">Katsina</option>
+                                    <option value="Kebbi">Kebbi</option>
+                                    <option value="Kogi">Kogi</option>
+                                    <option value="Kwara">Kwara</option>
+                                    <option value="Lagos">Lagos</option>
+                                    <option value="Nasarawa">Nasarawa</option>
+                                    <option value="Niger">Niger</option>
+                                    <option value="Ogun">Ogun</option>
+                                    <option value="Ondo">Ondo</option>
+                                    <option value="Osun">Osun</option>
+                                    <option value="Oyo">Oyo</option>
+                                    <option value="Plateau">Plateau</option>
+                                    <option value="Rivers">Rivers</option>
+                                    <option value="Sokoto">Sokoto</option>
+                                    <option value="Taraba">Taraba</option>
+                                    <option value="Yobe">Yobe</option>
+                                    <option value="Zamfara">Zamfara</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Type -->
+            <div class="geography-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">Location Type</h3>
+                    <p class="serial">04</p>
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="location" id="urban" value="urban" class="hidden-input">
+                        <label for="urban" class="option-label">Urban</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="location" id="rural" value="rural" class="hidden-input">
+                        <label for="rural" class="option-label">Rural</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="nav-btn prev-btn" data-prev="demographics">Previous</button>
+                <button class="nav-btn next-btn" data-next="medical">Next</button>
+            </div>
+        </div>
+
+        <!-- Medical History Container -->
+        <div class="container medical-container">
+            <div class="medical-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">Any chronic conditions?</h3>
+                    <p class="serial">06</p>
+                </div>
+
+                <!-- Chronic Conditions -->
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" name="conditions" id="diabetes" value="diabetes" class="hidden-input">
+                        <label for="diabetes" class="option-label">Diabetes</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="conditions" id="hypertension" value="hypertension"
+                            class="hidden-input">
+                        <label for="hypertension" class="option-label">Hypertension</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="conditions" id="asthma" value="asthma" class="hidden-input">
+                        <label for="asthma" class="option-label">Asthma</label>
+                    </div>
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" name="conditions" id="heart-disease" value="heart-disease"
+                            class="hidden-input">
+                        <label for="heart-disease" class="option-label">Heart Disease</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="conditions" id="arthritis" value="arthritis" class="hidden-input">
+                        <label for="arthritis" class="option-label">Arthritis</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="conditions" id="kidney-disease" value="kidney-disease"
+                            class="hidden-input">
+                        <label for="kidney-disease" class="option-label">Kidney Disease</label>
+                    </div>
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" name="conditions" id="others-condition" value="others"
+                            class="hidden-input">
+                        <label for="others-condition" class="option-label">Others</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="conditions" id="none-conditions" value="none" class="hidden-input">
+                        <label for="none-conditions" class="option-label">None</label>
+                    </div>
+                </div>
+
+                <!-- Others Input (shown when others is selected) -->
+                <div class="others-condition-details" style="display: none;">
+                    <div class="input-group">
+                        <label for="other-condition-text" class="input-label">Please specify other conditions:</label>
+                        <input type="text" id="other-condition-text" name="other-condition-text"
+                            class="text-input-clean" placeholder="Enter your condition...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regular Medication -->
+            <div class="medical-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">Are you currently on regular medication?</h3>
+                    <p class="serial">07</p>
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="medication" id="medication-yes" value="yes" class="hidden-input">
+                        <label for="medication-yes" class="option-label">Yes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="medication" id="medication-no" value="no" class="hidden-input">
+                        <label for="medication-no" class="option-label">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Allergies -->
+            <div class="medical-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">Any allergies?</h3>
+                    <p class="serial">08</p>
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="allergies" id="allergies-yes" value="yes" class="hidden-input">
+                        <label for="allergies-yes" class="option-label">Yes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="allergies" id="allergies-no" value="no" class="hidden-input">
+                        <label for="allergies-no" class="option-label">No</label>
+                    </div>
+                </div>
+
+                <!-- Allergy Details (shown when yes is selected) -->
+                <div class="allergy-details" style="display: none;">
+                    <div class="input-group">
+                        <label for="allergy-types" class="input-label">What type of allergies?</label>
+                        <input type="text" id="allergy-types" name="allergy-types" class="text-input-clean"
+                            placeholder="Please describe your allergies...">
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="nav-btn prev-btn" data-prev="geography">Previous</button>
+                <button class="nav-btn next-btn" data-next="lifestyle">Next</button>
+            </div>
+        </div>
+
+        <!-- Lifestyle & Risk Factors Container -->
+        <div class="container lifestyle-container">
+            <div class="lifestyle-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">Do you smoke or drink alcohol?</h3>
+                    <p class="serial">09</p>
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="smokeDrink" id="smoke-drink-yes" value="yes" class="hidden-input">
+                        <label for="smoke-drink-yes" class="option-label">Yes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="smokeDrink" id="smoke-drink-no" value="no" class="hidden-input">
+                        <label for="smoke-drink-no" class="option-label">No</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise -->
+            <div class="lifestyle-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">How often do you exercise?</h3>
+                    <p class="serial">10</p>
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="exercise" id="exercise-never" value="never" class="hidden-input">
+                        <label for="exercise-never" class="option-label">Never</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="exercise" id="exercise-sometimes" value="sometimes"
+                            class="hidden-input">
+                        <label for="exercise-sometimes" class="option-label">Sometimes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="exercise" id="exercise-regularly" value="regularly"
+                            class="hidden-input">
+                        <label for="exercise-regularly" class="option-label">Regularly</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sleep -->
+            <div class="lifestyle-ctn">
+                <div class="ctn-top">
+                    <h3 class="top-title">How is your sleep?</h3>
+                    <p class="serial">11</p>
+                </div>
+
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="sleep" id="sleep-poor" value="poor" class="hidden-input">
+                        <label for="sleep-poor" class="option-label">Poor</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="sleep" id="sleep-fair" value="fair" class="hidden-input">
+                        <label for="sleep-fair" class="option-label">Fair</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="sleep" id="sleep-good" value="good" class="hidden-input">
+                        <label for="sleep-good" class="option-label">Good</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="nav-btn prev-btn" data-prev="medical">Previous</button>
+                <button class="nav-btn complete-btn">Complete Profile</button>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="container chat-container">
+            <div class="chat-header">
+                <h3 class="chat-title">Health Assistant</h3>
+                <p class="chat-subtitle">Ask me about your health concerns</p>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <p>Hello! I'm your health assistant. Based on your profile, I can help answer questions about
+                            your health and symptoms. How are you feeling today?</p>
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+
+
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Type your message..." class="chat-input">
+                <button id="sendBtn" class="send-btn">
+                    <img src="./images/send-svgrepo-com.svg" alt="Send">
+                </button>
+
+                <!-- Confidence Progress Bar -->
+                <div class="confidence-progress-container">
+                    <div class="confidence-progress-bar">
+                        <div class="confidence-progress-fill" id="confidenceProgress"></div>
+                    </div>
+                    <span class="confidence-text" id="confidenceText">Gathering information... 0%</span>
+                </div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="nav-btn" onclick="startNewProfile()">Start New Profile</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
