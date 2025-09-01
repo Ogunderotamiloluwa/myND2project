@@ -1,3 +1,54 @@
+// API Configuration
+const API_CONFIG = {
+  BASE_URL: "https://mynd2server.onrender.com",
+  ENDPOINTS: {
+    CHAT: "/api/chat",
+    HEALTH: "/api/health",
+  },
+  TIMEOUT: 30000, // 30 seconds
+  MAX_RETRIES: 2,
+};
+
+// API Helper Functions
+async function makeAPICall(endpoint, payload, retries = 0) {
+  try {
+    console.log(`🌐 Making API call to: ${API_CONFIG.BASE_URL}${endpoint}`);
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.TIMEOUT);
+
+    const response = await fetch(`${API_CONFIG.BASE_URL}${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+    }
+
+    return response;
+  } catch (error) {
+    console.error(
+      `❌ API call failed (attempt ${retries + 1}):`,
+      error.message
+    );
+
+    if (retries < API_CONFIG.MAX_RETRIES && !error.name === "AbortError") {
+      console.log(`🔄 Retrying API call in 2 seconds...`);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      return makeAPICall(endpoint, payload, retries + 1);
+    }
+
+    throw error;
+  }
+}
+
 // Health Questionnaire Application
 class HealthQuestionnaire {
   constructor() {
@@ -992,13 +1043,7 @@ Otherwise, please continue answering questions for a better diagnosis.`;
       chatHistory: recentHistory,
     };
 
-    const response = await fetch("http://localhost:3000/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    const response = await makeAPICall(API_CONFIG.ENDPOINTS.CHAT, payload);
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -1207,13 +1252,7 @@ Make sure percentages add up to 100% and provide real medical condition names ba
       chatHistory: [], // Fresh context for conclusion
     };
 
-    const response = await fetch("http://localhost:3000/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    const response = await makeAPICall(API_CONFIG.ENDPOINTS.CHAT, payload);
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
