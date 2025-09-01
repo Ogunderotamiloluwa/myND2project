@@ -819,6 +819,8 @@ Otherwise, please continue answering questions for a better diagnosis.`;
   }
 
   formatConditionNames(conditions) {
+    console.log("formatConditionNames called with:", conditions);
+
     let response =
       "Based on our conversation, here are the possible conditions:<br><br>";
 
@@ -827,11 +829,21 @@ Otherwise, please continue answering questions for a better diagnosis.`;
     });
 
     response +=
-      '<br><a href="/result" style="background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 1rem;">View Detailed Results</a>';
+      '<br><button onclick="showResultsModal()" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 1rem;">View Detailed Results</button>';
+
+    // Store the conditions data for the results page
+    localStorage.setItem("diagnosisResults", JSON.stringify(conditions));
+    console.log("Stored diagnosis data in localStorage:", conditions);
+
     return response;
   }
 
   displayMessage(content, type, timestamp = null) {
+    // Check if this is a diagnosis message and clear any previous ones
+    if (type === "bot" && content.includes("possible conditions")) {
+      this.clearPreviousDiagnosisMessages();
+    }
+
     const chatMessages = document.getElementById("chatMessages");
     const messageDiv = document.createElement("div");
     messageDiv.className = `message ${type}-message`;
@@ -849,6 +861,25 @@ Otherwise, please continue answering questions for a better diagnosis.`;
 
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // Clear any previous diagnosis messages to avoid duplication
+  clearPreviousDiagnosisMessages() {
+    const chatMessages = document.getElementById("chatMessages");
+    const messages = chatMessages.querySelectorAll(".bot-message");
+
+    messages.forEach((message) => {
+      const content = message.querySelector(".message-content p");
+      if (content && content.innerHTML.includes("possible conditions")) {
+        message.remove();
+      }
+    });
+
+    // Also clean up chat history
+    this.userData.chatHistory = this.userData.chatHistory.filter(
+      (msg) =>
+        !(msg.type === "bot" && msg.content.includes("possible conditions"))
+    );
   }
 
   addToChatHistory(content, type) {
@@ -1249,6 +1280,104 @@ function startNewProfile() {
 
   // Reload the page to start fresh
   location.reload();
+}
+
+// Modal functionality for results confirmation
+function showResultsModal() {
+  // Get diagnosis data from localStorage
+  const diagnosisData = localStorage.getItem("diagnosisResults");
+  if (!diagnosisData) {
+    alert("No diagnosis data found. Please complete the assessment first.");
+    return;
+  }
+
+  // Create modal HTML
+  const modalHTML = `
+    <div id="resultsModal" style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    ">
+      <div style="
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      ">
+        <h2 style="color: #2c3e50; margin-bottom: 15px; font-family: 'Boldonse', 'Open Sans', sans-serif;">
+          View Detailed Results?
+        </h2>
+        <p style="color: #5a6c7d; margin-bottom: 25px; line-height: 1.6;">
+          You'll be redirected to a detailed results page showing your diagnosis with explanations. 
+          Do you want to proceed?
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <button onclick="confirmViewResults()" style="
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+          ">
+            Yes, View Results
+          </button>
+          <button onclick="closeResultsModal()" style="
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+          ">
+            Stay Here
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Add modal to page
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
+}
+
+// Function to clear all chat data and restart
+function clearChatAndRestart() {
+  // Clear all localStorage data
+  localStorage.removeItem("diagnosisResults");
+  localStorage.removeItem("healthProfile");
+
+  // Reload the page to start fresh
+  location.reload();
+}
+
+function confirmViewResults() {
+  // Close modal first
+  closeResultsModal();
+
+  // Redirect to results page (go up one level from pages folder)
+  window.location.href = "../resultp.html";
+}
+
+function closeResultsModal() {
+  const modal = document.getElementById("resultsModal");
+  if (modal) {
+    modal.remove();
+  }
 }
 
 // Initialize the application when DOM is loaded
