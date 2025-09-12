@@ -2,255 +2,243 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SymptomChat - Anonymous Medical Symptom Assessment</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Boldonse&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="My ND2p.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SymptomChat - Anonymous Medical Symptom Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="My ND2p.css">
+
+    <style>
+        /* New Styles for Animation */
+        .animated-div {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animated-div.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* New Fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #e0e0e0;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
+    <header class="animated-div">
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">SympChat</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#privacy">Privacy</a></li>
+                </ul>
+                <a href="pages/question.html" class="consult-btn">Start Assessment</a>
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+            <div class="mobile-nav" id="mobileNav">
+                <ul class="mobile-nav-links">
+                    <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+                    <li><a href="#how-it-works" onclick="closeMobileMenu()">How it works</a></li>
+                    <li><a href="#privacy" onclick="closeMobileMenu()">Privacy</a></li>
+                    <li><a href="pages/question.html" class="mobile-consult-btn" onclick="closeMobileMenu()">Start
+                            Assessment</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-      <nav>
-        <a href="/" class="logo">SympChat</a>
+        <section class="hero animated-div">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge">100% Anonymous & Private</div>
+                    <h1>Get Instant Medical Assessment for Your Symptoms</h1>
+                    <p>Chat anonymously with our AI-powered symptom checker. No personal information required. Get
+                        reliable medical insights based on your symptoms in minutes.</p>
+                    <a href="pages/question.html" class="book-btn">Start Free Assessment</a>
+                </div>
+                <div class="hero-image">
+                    <img src="images/logo.png" alt="Anonymous Medical Chat">
+                </div>
+            </div>
+        </section>
 
-        <!-- Desktop Navigation -->
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="#privacy">Privacy</a></li>
-        </ul>
-
-        <a href="pages/question.html" class="consult-btn">Start Assessment</a>
-
-        <!-- Mobile Menu Toggle -->
-        <div class="mobile-menu-toggle" id="mobileMenuToggle">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="cards-grid animated-div">
+            <div class="card benefits-card">
+                <h3>Complete Privacy</h3>
+                <p>No names, no personal details. Your symptoms and conversations remain completely anonymous.</p>
+                <a href="#privacy" class="book-now-btn">Learn More</a>
+            </div>
+            <div class="card stats-card">
+                <div class="stats-number">2-5</div>
+                <div class="stats-label">Minutes</div>
+                <h3>Quick Assessment</h3>
+                <p>Get medical insights for your symptoms in just a few minutes through our simple chat interface.</p>
+            </div>
+            <div class="card">
+                <h3>AI-Powered Diagnosis</h3>
+                <p>Our advanced AI analyzes your symptoms and provides reliable medical assessments based on medical
+                    knowledge.</p>
+                <div class="features-list">
+                    <div>✓ Evidence-based analysis</div>
+                    <div>✓ Multiple condition assessment</div>
+                    <div>✓ Instant results</div>
+                </div>
+            </div>
         </div>
-      </nav>
 
-      <!-- Mobile Navigation Menu -->
-      <div class="mobile-nav" id="mobileNav">
-        <ul class="mobile-nav-links">
-          <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
-          <li><a href="#how-it-works" onclick="closeMobileMenu()">How it works</a></li>
-          <li><a href="#privacy" onclick="closeMobileMenu()">Privacy</a></li>
-          <li><a href="pages/question.html" class="mobile-consult-btn" onclick="closeMobileMenu()">Start Assessment</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header>
-
-  <div class="container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <div class="badge">100% Anonymous & Private</div>
-          <h1>Get Instant Medical Assessment for Your Symptoms</h1>
-          <p>Chat anonymously with our AI-powered symptom checker. No personal information required. Get reliable
-            medical insights based on your symptoms in minutes.</p>
-          <a href="pages/question.html" class="book-btn">Start Free Assessment</a>
+        <div class="card animated-div">
+            <div class="service-stats">
+                <div class="stats-list">
+                    <h3>How SymptomChat Works</h3>
+                    <p>Simple 3-step process to get your symptom assessment</p>
+                    <div class="stat-item">
+                        <span class="stat-percentage">Step 1</span>
+                        <span class="stat-label">Answer basic health questions</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-percentage">Step 2</span>
+                        <span class="stat-label">Chat about your symptoms</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-percentage">Step 3</span>
+                        <span class="stat-label">Receive AI diagnosis</span>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/hero-image.png" alt="Chat Interface">
+                </div>
+            </div>
         </div>
-        <div class="hero-image">
-          <img src="images/logo.png" alt="Anonymous Medical Chat">
-        </div>
-      </div>
-    </section>
 
-    <!-- Cards Grid -->
-    <div class="cards-grid">
-      <!-- Privacy Card -->
-      <div class="card benefits-card">
-        <h3>Complete Privacy</h3>
-        <p>No names, no personal details. Your symptoms and conversations remain completely anonymous.</p>
-        <a href="#privacy" class="book-now-btn">Learn More</a>
-      </div>
-
-      <!-- Speed Card -->
-      <div class="card stats-card">
-        <div class="stats-number">2-5</div>
-        <div class="stats-label">Minutes</div>
-        <h3>Quick Assessment</h3>
-        <p>Get medical insights for your symptoms in just a few minutes through our simple chat interface.</p>
-      </div>
-
-      <!-- AI Assessment -->
-      <div class="card">
-        <h3>AI-Powered Diagnosis</h3>
-        <p>Our advanced AI analyzes your symptoms and provides reliable medical assessments based on medical knowledge.
-        </p>
-        <div class="features-list">
-          <div>✓ Evidence-based analysis</div>
-          <div>✓ Multiple condition assessment</div>
-          <div>✓ Instant results</div>
+        <div class="cards-grid animated-div">
+            <div class="card consultation-card">
+                <h3>Anonymous & Secure</h3>
+                <p>Your privacy is our priority. No registration, no personal data collection, just pure symptom
+                    assessment.</p>
+                <div style="margin: 20px 0; display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="background:black; padding: 15px; border-radius: 10px;">
+                        <strong>100% Private Conversations</strong>
+                    </div>
+                    <a href="pages/question.html" class="book-now-btn">Start Now</a>
+                </div>
+                <div style="background: black; padding: 10px; border-radius: 8px; font-size: 12px;">
+                    No data stored permanently
+                </div>
+            </div>
+            <div class="card">
+                <h3>Trusted AI Technology</h3>
+                <p style="font-size: 14px;">Powered by advanced medical AI trained on thousands of medical cases and
+                    symptoms</p>
+                <div class="trust-indicators" style="margin: 15px 0;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
+                        <span style="font-size: 12px;">Medical knowledge base</span>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
+                        <span style="font-size: 12px;">Evidence-based analysis</span>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
+                        <span style="font-size: 12px;">Continuous learning</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card specialty-card">
+                <h3>Quick & Easy Process</h3>
+                <p>Simple steps to get your assessment:</p>
+                <div style="display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap;">
+                    <div style="padding: 8px 12px; background: black; border-radius: 8px; font-size: 12px;">Questions
+                    </div>
+                    <div style="padding: 8px 12px; background:black; border-radius: 8px; font-size: 12px;">Chat</div>
+                    <div style="padding: 8px 12px; background: black; border-radius: 8px; font-size: 12px;">Diagnosis
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Start Your Assessment</h3>
+                <p>Ready to understand your symptoms better? Begin your anonymous consultation now.</p>
+                <a href="pages/question.html" class="connect-btn">Start Assessment</a>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Service Stats -->
-    <div class="card">
-      <div class="service-stats">
-        <div class="stats-list">
-          <h3>How SymptomChat Works</h3>
-          <p>Simple 3-step process to get your symptom assessment</p>
-          <div class="stat-item">
-            <span class="stat-percentage">Step 1</span>
-            <span class="stat-label">Answer basic health questions</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-percentage">Step 2</span>
-            <span class="stat-label">Chat about your symptoms</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-percentage">Step 3</span>
-            <span class="stat-label">Receive AI diagnosis</span>
-          </div>
-        </div>
-        <div class="hero-image">
-          <img src="images/hero-image.png" alt="Chat Interface">
-        </div>
-      </div>
-    </div>
+        <section class="video-service animated-div">
+            <h2>Anonymous symptom assessment <span style="color: #ccc;">powered by AI technology for instant medical
+                    insights.</span></h2>
+            <p>No registration required. No personal data collected. Just honest, reliable symptom analysis.</p>
+        </section>
 
-    <!-- Features and Benefits -->
-    <div class="cards-grid">
-      <div class="card consultation-card">
-        <h3>Anonymous & Secure</h3>
-        <p>Your privacy is our priority. No registration, no personal data collection, just pure symptom assessment.</p>
-        <div style="margin: 20px 0; display: flex; flex-direction: column; gap: 1rem;">
-          <div style="background: white; padding: 15px; border-radius: 10px;">
-            <strong>100% Private Conversations</strong>
-          </div>
-          <a href="pages/question.html" class="book-now-btn">Start Now</a>
+        <div class="bottom-gallery animated-div">
+            <div class="gallery-item feature-item">
+                <div class="feature-icon">🔒</div>
+                <p>Private</p>
+            </div>
+            <div class="gallery-item feature-item">
+                <div class="feature-icon">⚡</div>
+                <p>Fast</p>
+            </div>
+            <div class="gallery-item feature-item">
+                <div class="feature-icon">🤖</div>
+                <p>AI-Powered</p>
+            </div>
+            <div class="gallery-item feature-item">
+                <div class="feature-icon">💬</div>
+                <p>Chat-Based</p>
+            </div>
+            <div class="gallery-item feature-item">
+                <div class="feature-icon">🎯</div>
+                <p>Accurate</p>
+            </div>
         </div>
-        <div style="background: #d4edda; padding: 10px; border-radius: 8px; font-size: 12px;">
-          No data stored permanently
-        </div>
-      </div>
 
-      <div class="card">
-        <h3>Trusted AI Technology</h3>
-        <p style="font-size: 14px;">Powered by advanced medical AI trained on thousands of medical cases and symptoms
-        </p>
-        <div class="trust-indicators" style="margin: 15px 0;">
-          <div style="display: flex; gap: 10px; align-items: center;">
-            <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
-            <span style="font-size: 12px;">Medical knowledge base</span>
-          </div>
-          <div style="display: flex; gap: 10px; align-items: center;">
-            <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
-            <span style="font-size: 12px;">Evidence-based analysis</span>
-          </div>
-          <div style="display: flex; gap: 10px; align-items: center;">
-            <div style="width: 12px; height: 12px; background: #28a745; border-radius: 50%;"></div>
-            <span style="font-size: 12px;">Continuous learning</span>
-          </div>
+        <div class="card animated-div" style="text-align: center; margin: 40px 0;">
+            <h3>Ready to understand your symptoms?</h3>
+            <p>Start your free, anonymous assessment now. No signup required.</p>
+            <a href="pages/question.html" class="book-now-btn" style="margin-top: 20px;">Start Assessment</a>
         </div>
-      </div>
-
-      <div class="card specialty-card">
-        <h3>Quick & Easy Process</h3>
-        <p>Simple steps to get your assessment:</p>
-        <div style="display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap;">
-          <div style="padding: 8px 12px; background: #e3f2fd; border-radius: 8px; font-size: 12px;">Questions</div>
-          <div style="padding: 8px 12px; background: #f3e5f5; border-radius: 8px; font-size: 12px;">Chat</div>
-          <div style="padding: 8px 12px; background: #e8f5e8; border-radius: 8px; font-size: 12px;">Diagnosis</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Start Your Assessment</h3>
-        <p>Ready to understand your symptoms better? Begin your anonymous consultation now.</p>
-        <a href="pages/question.html" class="connect-btn">Start Assessment</a>
-      </div>
     </div>
 
-    <!-- About Section -->
-    <section class="video-service">
-      <h2>Anonymous symptom assessment <span style="color: #ccc;">powered by AI technology for instant medical
-          insights.</span></h2>
-      <p>No registration required. No personal data collected. Just honest, reliable symptom analysis.</p>
-    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animated-div');
 
-    <!-- Key Features -->
-    <div class="bottom-gallery">
-      <div class="gallery-item feature-item">
-        <div class="feature-icon">🔒</div>
-        <p>Private</p>
-      </div>
-      <div class="gallery-item feature-item">
-        <div class="feature-icon">⚡</div>
-        <p>Fast</p>
-      </div>
-      <div class="gallery-item feature-item">
-        <div class="feature-icon">🤖</div>
-        <p>AI-Powered</p>
-      </div>
-      <div class="gallery-item feature-item">
-        <div class="feature-icon">💬</div>
-        <p>Chat-Based</p>
-      </div>
-      <div class="gallery-item feature-item">
-        <div class="feature-icon">🎯</div>
-        <p>Accurate</p>
-      </div>
-    </div>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+            });
 
-    <!-- Call to Action -->
-    <div class="card" style="text-align: center; margin: 40px 0;">
-      <h3>Ready to understand your symptoms?</h3>
-      <p>Start your free, anonymous assessment now. No signup required.</p>
-      <a href="pages/question.html" class="book-now-btn" style="margin-top: 20px;">Start Assessment</a>
-    </div>
-  </div>
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
 
-  <script>
-    // Mobile menu functionality
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileNav = document.getElementById('mobileNav');
-
-    mobileMenuToggle.addEventListener('click', function () {
-      const isActive = mobileNav.classList.contains('active');
-
-      if (isActive) {
-        closeMobileMenu();
-      } else {
-        mobileNav.classList.add('active');
-        mobileMenuToggle.classList.add('active');
-        document.body.classList.add('mobile-menu-open');
-      }
-    });
-
-    function closeMobileMenu() {
-      mobileNav.classList.remove('active');
-      mobileMenuToggle.classList.remove('active');
-      document.body.classList.remove('mobile-menu-open');
-    }
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function (event) {
-      if (!mobileMenuToggle.contains(event.target) && !mobileNav.contains(event.target)) {
-        closeMobileMenu();
-      }
-    });
-
-    // Close mobile menu on window resize
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 768) {
-        closeMobileMenu();
-      }
-    });
-  </script>
+    <script src="animations.js"></script>
 </body>
 
 </html>

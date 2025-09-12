@@ -1,4 +1,6 @@
-/* Results Page Styling */
+/* Results Page Styling with Dark, Dynamic Theme */
+
+
 * {
   margin: 0;
   padding: 0;
@@ -7,16 +9,27 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #F0F8FF;
-  background: linear-gradient(to bottom right,
-      #87CEEB 0%,
-      #ADD8E6 25%,
-      #E0FFFF 50%,
-      #F0F8FF 75%,
-      #FFFFFF 100%);
+  /* Dark background with a subtle linear gradient for depth */
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  color: #f0f0f0;
   min-height: 100vh;
   margin: 0;
   padding: 20px;
+  /* Add an animated gradient overlay for a dynamic background effect */
+  animation: backgroundPan 15s ease infinite;
+}
+
+/* Keyframe animation for the body background */
+@keyframes backgroundPan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .container {
@@ -29,33 +42,51 @@ body {
 .header {
   text-align: center;
   margin-bottom: 40px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Updated glass effect for the dark theme */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   position: relative;
+  /* Add a pulse animation for attention */
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Keyframe animation for the header pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .title {
   font-family: 'Boldonse', 'Open Sans', sans-serif;
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #fff;
   margin-bottom: 10px;
   font-weight: 700;
+  /* Add a text shadow for a glowing effect */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .subtitle {
   font-size: 1.1rem;
-  color: #5a6c7d;
+  color: #d1d1d1;
   margin-bottom: 20px;
 }
 
 .back-btn {
-  background-color: #6c757d;
-  color: white;
+  background-color: #4a4a4a;
+  color: #fff;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
@@ -65,11 +96,13 @@ body {
   position: absolute;
   top: 20px;
   left: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .back-btn:hover {
-  background-color: #5a6268;
+  background-color: #6a6a6a;
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
 /* Results Grid */
@@ -82,26 +115,60 @@ body {
 
 /* Result Cards */
 .result-card {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Updated glass effect for the dark theme */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   padding: 25px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
   min-height: 280px;
   display: flex;
   flex-direction: column;
+  /* Animation for cards to slide up on load */
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Keyframe animation for cards to fade in and slide up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .result-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.5);
 }
 
+/* Make each card animate with a slight delay */
+.result-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.result-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.result-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.result-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.result-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+/* You can add more for more cards */
+
 .card-header {
-  border-bottom: 2px solid rgba(52, 152, 219, 0.3);
+  border-bottom: 2px solid rgba(52, 152, 219, 0.2);
   padding-bottom: 15px;
   margin-bottom: 20px;
 }
@@ -109,7 +176,7 @@ body {
 .condition-name {
   font-family: 'Boldonse', 'Open Sans', sans-serif;
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: #f0f0f0;
   font-weight: 600;
   text-align: center;
 }
@@ -128,18 +195,33 @@ body {
   color: #3498db;
   margin-bottom: 5px;
   line-height: 1;
+  /* Add a slight, continuous animation to the percentage */
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Keyframe animation for a floating effect */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .probability-label {
   font-size: 0.9rem;
-  color: #7f8c8d;
+  color: #a0a0a0;
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .explanation {
-  color: #5a6c7d;
+  color: #c0c0c0;
   line-height: 1.6;
   font-style: italic;
   flex: 1;
@@ -151,11 +233,12 @@ body {
 /* No Results State */
 .no-results {
   text-align: center;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
   border-radius: 16px;
   padding: 40px;
-  color: #5a6c7d;
+  color: #c0c0c0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .no-results p {
@@ -177,20 +260,22 @@ body {
 .primary-btn:hover {
   background-color: #2980b9;
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
 }
 
 /* Footer/Disclaimer */
 .disclaimer {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
   border-radius: 12px;
   padding: 20px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .disclaimer p {
-  color: #7f8c8d;
+  color: #a0a0a0;
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -200,38 +285,30 @@ body {
   .container {
     padding: 0 15px;
   }
-
   body {
     padding: 15px;
   }
-
   .title {
     font-size: 2rem;
   }
-
   .results-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-
   .result-card {
     min-height: 250px;
     padding: 20px;
   }
-
   .percentage {
     font-size: 2.5rem;
   }
-
   .condition-name {
     font-size: 1.3rem;
   }
-
   .back-btn {
     position: static;
     margin-bottom: 15px;
   }
-
   .header {
     padding: 20px;
   }
@@ -241,46 +318,46 @@ body {
   .title {
     font-size: 1.8rem;
   }
-
   .subtitle {
     font-size: 1rem;
   }
-
   .result-card {
     min-height: 220px;
     padding: 15px;
   }
-
   .percentage {
     font-size: 2.2rem;
   }
-
   .condition-name {
     font-size: 1.2rem;
   }
-
   .explanation {
     font-size: 0.9rem;
   }
 }
 
-/* Color variations for different percentages */
+/* Color variations for different probabilities */
 .result-card:nth-child(1) .percentage {
   color: #e74c3c;
   /* Red for highest probability */
 }
 
 .result-card:nth-child(2) .percentage {
+  color: #f1c40f;
+  /* Yellow for medium-high probability */
+}
+
+.result-card:nth-child(3) .percentage {
   color: #f39c12;
   /* Orange for medium probability */
 }
 
-.result-card:nth-child(3) .percentage {
-  color: #27ae60;
+.result-card:nth-child(4) .percentage {
+  color: #2ecc71;
   /* Green for lower probability */
 }
 
-.result-card:nth-child(n+4) .percentage {
+.result-card:nth-child(n+5) .percentage {
   color: #3498db;
-  /* Blue for additional conditions */
+  /* Blue for lowest probabilities */
 }
