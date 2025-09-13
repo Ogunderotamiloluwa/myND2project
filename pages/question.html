@@ -12,19 +12,34 @@
 <body>
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
-
     <div class="sidebar">
-        <h1 class="logo">Logo</h1>
+        <div class="logo-container">
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5a5.4 5.4 0 015.4-5.4c2.27 0 4.14 1.25 5.1 3.29.96-2.04 2.83-3.29 5.1-3.29A5.4 5.4 0 0122 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    fill="#32beff" />
+            </svg>
+            <h1 class="logo">Health Powered By Samson</h1>
+        </div>
 
         <div class="article">
             <h2 class="side-title">
-                Lets know you small
+                Let's know you small
             </h2>
             <p class="side-msg">Answer these very few questions to help us make correct decisions. <span>We do not save
                     any of these info so do not reload page.</span></p>
         </div>
 
-        <!-- Progress Bar -->
+        <div class="chat-commands">
+            <h2 class="side-title">Quick Commands</h2>
+            <p class="side-msg">
+                Type <strong>/result</strong> to skip to diagnosis results
+            </p>
+            <p class="side-msg">
+                Type <strong>/proceed</strong> to force response if bot refuses
+            </p>
+        </div>
+
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress-step active" data-step="1">1</div>
@@ -34,7 +49,6 @@
             </div>
         </div>
     </div>
-
     <div class="content">
         <!-- Demographics Container -->
         <div class="container demographics-container active-container">
@@ -453,6 +467,8 @@
             </div>
         </div>
     </div>
+
+    <script src="question.js"></script>
 </body>
 
 </html>

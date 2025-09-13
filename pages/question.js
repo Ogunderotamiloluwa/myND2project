@@ -865,7 +865,7 @@ Otherwise, please continue answering questions for a better diagnosis.`;
     } finally {
       sendBtn.disabled = false;
       sendBtn.innerHTML =
-        '<img src="./pages/images/send-svgrepo-com.svg" alt="Send">';
+        '<img src="./images/send-svgrepo-com.svg" alt="Send">';
     }
   }
 
