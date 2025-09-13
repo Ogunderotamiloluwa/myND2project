@@ -60,48 +60,6 @@
     /* Made the text a bit bigger */
 }
 
-/* Other styles from your original CSS remain unchanged */
-.sidebar {
-    /* ... existing sidebar styles ... */
-}
-
-.article {
-    /* ... existing article styles ... */
-}
-
-.side-title {
-    /* ... existing side-title styles ... */
-}
-
-.side-msg {
-    /* ... existing side-msg styles ... */
-}
-
-.progress-container {
-    /* ... existing progress-container styles ... */
-}
-
-.progress-bar {
-    /* ... existing progress-bar styles ... */
-}
-
-.progress-step {
-    /* ... existing progress-step styles ... */
-}
-
-.progress-step.active {
-    /* ... existing active step styles ... */
-}
-
-
-
-
-
-
-
-
-
-
 * {
     margin: 0;
     padding: 0;
